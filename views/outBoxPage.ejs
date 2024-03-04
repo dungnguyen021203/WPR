@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dmail - Outbox</title>
+    <link rel="stylesheet" href="/style1.css">
+    
+</head>
+
+<body>
+
+    <nav>
+        <h4>My Dmail</h4>
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/inboxPage">Inbox</a></li>
+            <li><a href="/outBoxPage">OutBox</a></li>
+            <li><a href="/composePage">Compose</a></li>
+            <li><a href="/auth/logout">Logout</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <h1>OutBox</h1>
+        <ul>
+            <% messages.forEach(message => { %>
+                <li>
+                    <a href="/details2/<%= message.mes_id %>">
+                        <strong>To: <%= message.receiver_name %></strong>
+                        <p>Title: <%= message.title %></p>
+                        <p>Message: <%= message.mes_body %></p>
+                    </a>
+                </li>
+            <% }); %>
+        </ul>
+    </main>
+
+</body>
+
+</html>

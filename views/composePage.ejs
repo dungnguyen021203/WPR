@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/style1.css">
+    <title>Dmail - Compose</title>
+    
+</head>
+
+<body>
+
+    <nav>
+        <h4>My Dmail</h4>
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/inboxPage">Inbox</a></li>
+            <li><a href="/outBoxPage">OutBox</a></li>
+            <li><a href="/composePage">Compose</a></li>
+            <li><a href="/auth/logout">Logout</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <div class="table">
+            <div class="tableWord">
+                Compose Email
+            </div>
+            <div class="tableBody">
+                <form action="/auth/composePage" method="POST" enctype="multipart/form-data">
+                    <div class="form">
+                        <label for="receiverEmail" class="form1">Email of receiver</label>
+                        <select id="receiverEmail" name="receiverEmail">
+                            <% users.forEach(user => { %>
+                                <option value="<%= user.user_email %>"><%= user.user_email %></option>
+                            <% }); %>
+                        </select>
+                    </div>
+                    
+
+                    <div class="form">
+                        <label for="name">Title</label>
+                        <input type="text" class="form1" id="title" name="title">
+                    </div>
+
+                    <div class="form">
+                        <label for="body">Body</label>
+                        <input type="text" class="form1" id="body" name="body">
+                    </div>
+
+                    <div class="form">
+                        <label for="file">File</label>
+                        <input type="file" class="form1" id="file" name="file">
+                    </div>
+                    <button type="submit" class="btn">Send</button>
+                </form>
+            </div>
+        </div>
+
+
+
+        <% if (typeof message !== "undefined" && message) { %>
+            <div class="mess">
+                <% if (message === "User registered") { %>
+                    <div class="alert">
+                        <strong>
+                            <%= message %>. <a href="/login">Sign in here</a>
+                        </strong>
+                    </div>
+                <% } else { %>
+                    <div class="alert">
+                        <strong>
+                            <%= message %>
+                        </strong>
+                    </div>
+                <% } %>
+            </div>
+        <% } %>
+
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/style.css">
+    <title>Dmail</title>
+</head>
+
+<body>
+
+    <nav>
+        <h4>My Dmail</h4>
+        <ul>
+            <li><a href="/">Home</a></li>
+            <% if (user) { %>
+                <li><a href="/auth/logout">Logout</a></li>
+                <% } %>
+        </ul>
+    </nav>
+
+    <% if (user) { %>
+        <div class="container">
+            <div>
+                <h1>Welcome back, <%=user.user_name%></p>
+                <hr>
+                <p>What do you want to do today</p>
+                <a class="btn" href="/inboxPage">Check Inbox</a>
+                <a class="btn" href="/outBoxPage">Chech Outbox</a>
+                <a class="btn" href="/composePage">Compose Email</a>
+            </div>
+        </div>
+    <% } %>
+</body>
+
+</html>
